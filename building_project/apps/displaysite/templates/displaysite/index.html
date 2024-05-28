@@ -12,49 +12,7 @@
         <script src="https://kit.fontawesome.com/62e1420fd9.js" crossorigin="anonymous"></script>
     </head>
     <body>
-        <div class="header">
-            <div class="container">
-                <div class="navbar">
-                    <div class="logo">
-                        <img src="{% static images_dir %}/logo/logofinal.png" width="125px">
-                    </div>
-                    <nav>
-                        <ul>
-                            <li>
-                                <a href="">Головна</a>
-                            </li>
-                            <li>
-                                <a href="">Товари</a>
-                            </li>
-                            <li>
-                                <a href="">Про нас</a>
-                            </li>
-                            <li>
-                                <a href="">Контакти</a>
-                            </li>
-                            <li>
-                                <a href="">Акаунт</a>
-                            </li>
-                        </ul>
-                    </nav>
-                    <img src="images/cart_icon.png" width="30px" height="30px">
-                </div>
-                <div class="row">
-                    <div class="col-2">
-                        <h1>Високоякісні товари
-                            <br>По доступним цінам!
-                        </h1>
-                        <p>Цілодобова служба підтримки за телефоном та у месенжерах, десятки опцій доставки.
-                            <br>Імпортні товари з Європи та США.
-                        </p>
-                        <a href="" class="btn">Переглянути товари &#8594;</a>
-                    </div>
-                    <div class="col-2">
-                        <img src="images/mainpic11.png">
-                    </div>
-                </div>
-            </div>
-        </div>
+        {% include 'partials/header.html' %}
         <div class="categories">
             <div class="small-container">
                 <div class="row">
@@ -73,54 +31,12 @@
         <div class="small-container">
             <h2 class="title">Бестселлери</h2>
             <div class="row">
-                <div class="col-4">
-                    <img src="images/products/product1.jpeg">
-                    <h4>Машинна штукатурка Krestel 25kg</h4>
-                    <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                    </div>
-                    <p>1200 грн.</p>
-                </div>
-                <div class="col-4">
-                    <img src="images/products/product4.png">
-                    <h4>Лак для деревини Lux Decor</h4>
-                    <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                    </div>
-                    <p>700 грн.</p>
-                </div>
-                <div class="col-4">
-                    <img src="images/products/product1.jpeg">
-                    <h4>Силоксанова гідрофобна пропитка Bayris</h4>
-                    <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                    </div>
-                    <p>850 грн.</p>
-                </div>
-                <div class="col-4">
-                    <img src="images/products/product10.jpg">
-                    <h4>Штангенциркуль Dnipro-M</h4>
-                    <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                    </div>
-                    <p>680 грн.</p>
-                </div>
+                
+              
+                {% with product_url='/product/1/' image_url='images/products/product1.jpg' product_name='Product 1' rating=5 price='100 грн.' %}
+    {% include 'partials/mini_product_card.html' %}
+{% endwith %}
+
             </div>
             <h2 class="title">Новинки</h2>
             <div class="row">

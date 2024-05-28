@@ -1,0 +1,46 @@
+{% load static %}
+{% with images_dir='displaysite/images/' %}
+<div class="header">
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <img src="{% static images_dir %}/logo/logofinal.png" width="125px">
+            </div>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="">Головна</a>
+                    </li>
+                    <li>
+                        <a href="">Товари</a>
+                    </li>
+                    <li>
+                        <a href="">Про нас</a>
+                    </li>
+                    <li>
+                        <a href="">Контакти</a>
+                    </li>
+                    <li>
+                        <a href="">Акаунт</a>
+                    </li>
+                </ul>
+            </nav>
+            <img src="images/cart_icon.png" width="30px" height="30px">
+        </div>
+        <div class="row">
+            <div class="col-2">
+                <h1>Високоякісні товари
+                    <br>По доступним цінам!
+                </h1>
+                <p>Цілодобова служба підтримки за телефоном та у месенжерах, десятки опцій доставки.
+                    <br>Імпортні товари з Європи та США.
+                </p>
+                <a href="" class="btn">Переглянути товари &#8594;</a>
+            </div>
+            <div class="col-2">
+                <img src="images/mainpic11.png">
+            </div>
+        </div>
+    </div>
+</div>
+{% endwith %}
