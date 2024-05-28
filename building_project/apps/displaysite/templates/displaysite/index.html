@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+{% load static %}
+{% with images_dir='displaysite/images/' %}
+<html lang="uk">
+    <head>
+        <meta charset="UTF-8">
+        <title>SolidBuild</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'displaysite/css/styles.css' %}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@400..800&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/62e1420fd9.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div class="header">
+            <div class="container">
+                <div class="navbar">
+                    <div class="logo">
+                        <img src="{% static images_dir %}/logo/logofinal.png" width="125px">
+                    </div>
+                    <nav>
+                        <ul>
+                            <li>
+                                <a href="">Головна</a>
+                            </li>
+                            <li>
+                                <a href="">Товари</a>
+                            </li>
+                            <li>
+                                <a href="">Про нас</a>
+                            </li>
+                            <li>
+                                <a href="">Контакти</a>
+                            </li>
+                            <li>
+                                <a href="">Акаунт</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <img src="images/cart_icon.png" width="30px" height="30px">
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        <h1>Високоякісні товари
+                            <br>По доступним цінам!
+                        </h1>
+                        <p>Цілодобова служба підтримки за телефоном та у месенжерах, десятки опцій доставки.
+                            <br>Імпортні товари з Європи та США.
+                        </p>
+                        <a href="" class="btn">Переглянути товари &#8594;</a>
+                    </div>
+                    <div class="col-2">
+                        <img src="images/mainpic11.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="categories">
+            <div class="small-container">
+                <div class="row">
+                    <div class="col-3">
+                        <img src="images/mainpic1.png">
+                    </div>
+                    <div class="col-3">
+                        <img src="images/mainpic2.png">
+                    </div>
+                    <div class="col-3">
+                        <img src="images/mainpic3.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="small-container">
+            <h2 class="title">Бестселлери</h2>
+            <div class="row">
+                <div class="col-4">
+                    <img src="images/products/product1.jpeg">
+                    <h4>Машинна штукатурка Krestel 25kg</h4>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <p>1200 грн.</p>
+                </div>
+                <div class="col-4">
+                    <img src="images/products/product4.png">
+                    <h4>Лак для деревини Lux Decor</h4>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <p>700 грн.</p>
+                </div>
+                <div class="col-4">
+                    <img src="images/products/product1.jpeg">
+                    <h4>Силоксанова гідрофобна пропитка Bayris</h4>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <p>850 грн.</p>
+                </div>
+                <div class="col-4">
+                    <img src="images/products/product10.jpg">
+                    <h4>Штангенциркуль Dnipro-M</h4>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <p>680 грн.</p>
+                </div>
+            </div>
+            <h2 class="title">Новинки</h2>
+            <div class="row">
+                <div class="col-4">
+                    <img src="images/products/product7.png">
+                    <h4>Емаль Altax</h4>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <p>620 грн.</p>
+                </div>
+                <div class="col-4">
+                    <img src="images/products/product6.png">
+                    <h4>Грунтовка для деревини Altax</h4>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <p>700 грн.</p>
+                </div>
+                <div class="col-4">
+                    <img src="images/products/product2.jpeg">
+                    <h4>Скловата Knauf</h4>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <p>900 грн.</p>
+                </div>
+                <div class="col-4">
+                    <img src="images/products/product9.jpg">
+                    <h4>Дрель Dnipro-M</h4>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <p>2000 грн.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <img src="images/products/product8.jpg">
+                    <h4>Шуруповерт Dnipro-M</h4>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <p>1800 грн.</p>
+                </div>
+                <div class="col-4">
+                    <img src="images/products/product3.png">
+                    <h4>Шпаклівка акрилова Bayris</h4>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <p>570 грн.</p>
+                </div>
+                <div class="col-4">
+                    <img src="images/products/product11.jpg">
+                    <h4>Електричний степлер Dnipro-M</h4>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <p>1670 грн.</p>
+                </div>
+                <div class="col-4">
+                    <img src="images/products/product14.jpg">
+                    <h4>Керамічна плитка ILARIO BEIGE</h4>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <p>390.15 грн./кв. м.</p>
+                </div>
+            </div>
+            <div class="offer">
+                <div class="smaill-container">
+                    <div class="row">
+                        <div class="col-2">
+                            <img src="images/products/product15.png" class="offer-img">
+                        </div>
+                        <div class="col-2">
+                            <p>Ексклюзивно. Тільки на SolidBuild.</p>
+                            <h1>Вібротрамбовка Кентавр ВТ95</h1>
+                            <small>Вібротрамбовка Кентавр ВТ-95 призначена для проведення дорожніх та будівельних робіт зі стабілізації й ущільнення сипучих матеріалів, ґрунту, асфальтобетону й асфальту. Дана модель стане незамінною під час проведення ландшафтних робіт, а також робіт стосовно благоустрою невеликих територій.</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            {% include 'partials/footer.html' %}
+            <script>
+            var MenuItems = document.getElementById("MenulItems") ; 
+
+                MenuItems.style.maxHeight = "0px"; 
+                function menutoggle(){ 
+                if (MenuItems.style.maxHeight == "0px") 
+
+                {
+                MenuItems.style.maxHeight = "200px";
+                } 
+                else
+                {
+                MenuItems.style.maxHeight = "0px";
+                }
+                }
+            </script>
+        </body>
+       
+    </html>
+    {% endwith %}
