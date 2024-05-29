@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'grappelli',
     'displaysite',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -57,7 +58,7 @@ ROOT_URLCONF = 'building_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(PROJECT_ROOT,'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -65,6 +66,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.request',
             ],
         },
     },
@@ -119,11 +121,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = '/static/'
-
+STATIC_ROOT =  os.path.join(PROJECT_ROOT, 'static')
 # Для разработки
 STATICFILES_DIRS = [
-    BASE_DIR / "static",
+    r"D:\Общий доступ\University\Practise\Buildingsite\Backend\building_project\apps\displaysite\static",
 ]
+
 
 
 
