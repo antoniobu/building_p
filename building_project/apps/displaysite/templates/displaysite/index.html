@@ -2,6 +2,23 @@
 
 {% block title %}SolidBuild - Головна{% endblock %}
 {% block content %}
+<div class="row">
+    <div class="col-2">
+      <h1>
+        Високоякісні товари
+        <br />По доступним цінам!
+      </h1>
+      <p>
+        Цілодобова служба підтримки за телефоном та у месенжерах, десятки опцій доставки.
+        <br />Імпортні товари з Європи та США.
+      </p>
+      <a href="" class="btn">Переглянути товари &#8594;</a>
+    </div>
+    <div class="col-2">
+      <img src="images/mainpic11.png" />
+    </div>
+</div>
+
 <div class="categories">
     <div class="small-container">
         <div class="row">
@@ -17,27 +34,38 @@
         </div>
     </div>
 </div>
-{%if all_products%}
-    {% for product in all_products %}
-    {% if forloop.counter0|divisibleby:4 %}
+<div class="small-container">
+    {% if all_products %}
+    <div class="row">
+        {% for product in all_products %}
+            <div class="col-4">
+                {% with product.images.all as images %}
+                        {% for image in images %}
+                            
+                                <img src="{{ image.image }}" alt="{{ product.name }}">
+                                <p>{{ image.image }}</p>
+                            
+                        {% endfor %}
+                {% endwith %}
+                <a href="{% url 'displaysite:product' product.id %}">{{product.name}}</a>
+                <div class="rating">
+                    {% for i in "12345" %}
+                        <i class="fa fa-star"></i>
+                    {% endfor %}
+                </div>
+                <p>{{ product.price }} грн.</p>
+            </div>
+            {% if forloop.counter|divisibleby:4 and not forloop.last %}
                 </div><div class="row">
             {% endif %}
-    <div class="col-4">
-        <img src="{{ product.image_url }}" alt="{{ product.name }}">
-        <h4>{{ product.name }}</h4>
-        <div class="rating">
-            {% for i in "12345" %}
-                <i class="fa fa-star"></i>
-            {% endfor %}
-        </div>
-        <p>{{ product.price }} грн.</p>
+        {% endfor %}
     </div>
-    {% endfor %}
-    </div>
-{%else%}
-    Жодного товару не знайдено
-{%endif%}
-<script>
+        
+    {%else%}
+        Жодного товару не знайдено
+    {%endif%}
+</div>
+    <script>
     var MenuItems = document.getElementById("MenulItems") ; 
 
         MenuItems.style.maxHeight = "0px"; 

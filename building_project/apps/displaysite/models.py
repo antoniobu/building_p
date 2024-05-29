@@ -35,7 +35,7 @@ class Product(models.Model):
 # Модель изображения для товара
 class ProductImage(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='images')
-    image = models.ImageField(upload_to='product_images/')
+    image = models.ImageField(upload_to='images/')
 
 # Модель заказа
 class Order(models.Model):

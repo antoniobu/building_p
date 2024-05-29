@@ -127,6 +127,8 @@ STATICFILES_DIRS = [
     r"D:\Общий доступ\University\Practise\Buildingsite\Backend\building_project\apps\displaysite\static",
 ]
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 

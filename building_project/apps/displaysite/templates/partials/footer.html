@@ -1,3 +1,5 @@
+{% load static %}
+{% with images_dir='displaysite/images/' %}
 <div>
     <div class="footer">
         <div class="container">
@@ -6,8 +8,8 @@
                     <h3>Завантажити додаток</h3>
                     <p>Завантажити для Android та ios.</p>
                     <div class="app-Llogo">
-                        <img src="images/play-store.png">
-                        <img src="images/app-store.png">
+                        <img src="{% static 'displaysite/images/logo/play-store.jpg' %}">
+                        <img src="images/logo/app-store.png">
                     </div>
                 </div>
                 <div class="footer-col-2">
@@ -47,3 +49,4 @@
         </p>
     </div>
 </div>
+{% endwith %}
