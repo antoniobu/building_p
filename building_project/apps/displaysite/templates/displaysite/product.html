@@ -8,6 +8,7 @@
     <div class="row">
       <div class="col-2">
         {% with images=product.images.all  %}
+        {% if images%}
           {% if images.count == 1 %}
             {% for image in images %}
               {% if forloop.first %}
@@ -31,12 +32,30 @@
                 {% endif %}
               {% endif %}
             {% endfor %}
-        {% endif %}    
+        {% endif %}
+        {%else%} 
+        <img src="/media/misc/nophoto.jpg" alt="{{ product.name }}"/>
+        {% endif %}   
       {% endwith %}
       </div>
       <div class="col-2">
-        <h1>{{ product.name }}</h1>
-        <h2>{{ product.price }}</h2>
+        <p>
+          {{product.category}}/{{product.name}}
+        </p>
+        <style>
+          /* Черный текст */
+          h1 {
+            color: black;
+          }
+          /* Серый текст */
+          h1 span {
+            color: #555; /* или любой другой серый цвет */
+          }
+        </style>
+        <h1>
+          {{product.brand}} <span>{{product.model}}</span>
+        </h1>
+        <h2>{{ product.price }} грн.</h2>
 
         <div class="quantity-container">
           <h3>Бажана кількість:</h3>

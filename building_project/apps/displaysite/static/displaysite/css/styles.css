@@ -50,7 +50,7 @@ p {
     display: flex;
     align-items: center;
     flex-wrap: nowrap;
-    justify-content: space-between;
+    justify-content: start;
     width: 100%;
 }
 

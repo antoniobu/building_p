@@ -13,6 +13,8 @@ class Product(models.Model):
     name = models.CharField(max_length=255)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     description = models.TextField()
+    brand = models.CharField(max_length=255, default='Unknown Brand')  # Поле для бренда с дефолтным значением
+    model = models.CharField(max_length=255, default='Unknown Model')   # Поле для модели
     price = models.DecimalField(max_digits=10, decimal_places=2)
     in_stock = models.BooleanField(default=True)
     rating_1_star = models.PositiveIntegerField(default=0)

@@ -29,6 +29,7 @@
         {% for product in all_products %}
             <div class="col-4">
                 {% with images=product.images.all %}
+                {%if images%}
                     {% for image in images %}
                     {% if forloop.first %}
                         <img src="media/{{ image.image }}" alt="{{ product.name }}"/>
@@ -36,8 +37,11 @@
                         {% endif %}
                     
                     {% endfor  %}
+                {%else%}
+                    <img src="/media/misc/nophoto.jpg" alt="{{ product.name }}"/>
+                {% endif %}
                 {% endwith %}
-                <a href="{% url 'displaysite:product' product.id %}">{{product.name}}</a>
+                <a href="{% url 'displaysite:product' product.id %}">{{product.name}} {{product.brand}} {{product.model}}</a>
                 <div class="rating">
                     {% for i in "12345" %}
                         <i class="fa fa-star"></i>
