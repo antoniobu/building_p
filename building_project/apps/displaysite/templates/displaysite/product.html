@@ -8,21 +8,31 @@
     <div class="row">
       <div class="col-2">
         {% with images=product.images.all  %}
+          {% if images.count == 1 %}
+            {% for image in images %}
+              {% if forloop.first %}
+                <img src="{{ image.image.url }}" alt="{{ product.name }}" width="100%" id="ProductImg" />
+              {% endif %}
+            {% endfor %}
+          {% else %}
           {% for image in images %}
-            {% if forloop.first %}
-              <img src="{{ image.image.url }}" alt="{{ product.name }}" width="100%" id="ProductImg" />
-              <div class="small-img-row">
-                <div class="small-img-col">
-                  <img src="{{ image.image.url }}" alt="{{ product.name }}" width="100%" class="small-img" />
-              </div>
-            {% else %}
+              {% if forloop.first %}
+                <img src="{{ image.image.url }}" alt="{{ product.name }}" width="100%" id="ProductImg" />
+                <div class="small-img-row">
                   <div class="small-img-col">
-                      <img src="{{ image.image.url }}" alt="{{ product.name }}" width="100%" class="small-img" />
+                    <img src="{{ image.image.url }}" alt="{{ product.name }}" width="100%" class="small-img" />
+                </div>
+              {% else %}
+                    <div class="small-img-col">
+                        <img src="{{ image.image.url }}" alt="{{ product.name }}" width="100%" class="small-img" />
+                    </div>
+                {% if forloop.last %}
                   </div>
-              {% if forloop.last %}</div>{% endif %}
-            {% endif %}
-          {% endfor %}
-        {% endwith %}
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+        {% endif %}    
+      {% endwith %}
       </div>
       <div class="col-2">
         <h1>{{ product.name }}</h1>
