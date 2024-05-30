@@ -4,21 +4,64 @@
   {{ product.name }}
 {% endblock %}
 {% block content %}
-  <div class="col-2">
-    <h1>{{ product.name }}</h1>
-    <h2>{{ product.price }}</h2>
+  <div class="small-container single-product">
+    <div class="row">
+      <div class="col-2">
+        {% with images=product.images.all  %}
+          {% for image in images %}
+            {% if forloop.first %}
+              <img src="{{ image.image.url }}" alt="{{ product.name }}" width="100%" id="ProductImg" />
+              <div class="small-img-row">
+                <div class="small-img-col">
+                  <img src="{{ image.image.url }}" alt="{{ product.name }}" width="100%" class="small-img" />
+              </div>
+            {% else %}
+                  <div class="small-img-col">
+                      <img src="{{ image.image.url }}" alt="{{ product.name }}" width="100%" class="small-img" />
+                  </div>
+              {% if forloop.last %}</div>{% endif %}
+            {% endif %}
+          {% endfor %}
+        {% endwith %}
+      </div>
+      <div class="col-2">
+        <h1>{{ product.name }}</h1>
+        <h2>{{ product.price }}</h2>
 
-    <div class="quantity-container">
-      <h3>Бажана кількість:</h3>
-      <input type="number" value="1" />
+        <div class="quantity-container">
+          <h3>Бажана кількість:</h3>
+          <input type="number" value="1" />
+        </div>
+
+        <a href="" class="btn">Замовити</a>
+        <h3>
+          Опис:
+          <i class="fa fa-indent"></i>
+        </h3>
+        <br />
+        <p>{{ product.description }}</p>
+      </div>
     </div>
-
-    <a href="" class="btn">Замовити</a>
-    <h3>
-      Опис:
-      <i class="fa fa-indent"></i>
-    </h3>
-    <br />
-    <p>{{ product.description }}</p>
   </div>
+  <script>
+    var ProductImg = document.getElementById("ProductImg");
+    var SmallImg = document.getElementsByClassName("small-img");
+
+    SmallImg[0].onclick = function()
+    {
+        ProductImg.src = SmallImg[0].src;   
+    }
+    SmallImg[1].onclick = function()
+    {
+        ProductImg.src = SmallImg[1].src;   
+    }
+    SmallImg[2].onclick = function()
+    {
+        ProductImg.src = SmallImg[2].src;   
+    }
+    SmallImg[3].onclick = function()
+    {
+        ProductImg.src = SmallImg[3].src;   
+    }
+</script>
 {% endblock %}

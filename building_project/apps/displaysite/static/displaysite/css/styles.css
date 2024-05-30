@@ -91,7 +91,7 @@ p {
 }
 
 .header {
-    background: radial-gradient(#fff, #75a7df);
+    background: #75a7df;
 }
 
 .categories {
@@ -306,7 +306,7 @@ input:focus {
 
 .small-img-row {
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
 }
 
 .small-img-col {

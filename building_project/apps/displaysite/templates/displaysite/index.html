@@ -2,6 +2,8 @@
 
 {% block title %}SolidBuild - Головна{% endblock %}
 {% block content %}
+<div class="header">
+<div class="container">
 <div class="row">
     <div class="col-2">
       <h1>
@@ -15,37 +17,25 @@
       <a href="" class="btn">Переглянути товари &#8594;</a>
     </div>
     <div class="col-2">
-      <img src="images/mainpic11.png" />
+      <img src="media/misc/mainpic11.png" />
     </div>
+</div>
+</div>
 </div>
 
-<div class="categories">
-    <div class="small-container">
-        <div class="row">
-            <div class="col-3">
-                <img src="images/mainpic1.png">
-            </div>
-            <div class="col-3">
-                <img src="images/mainpic2.png">
-            </div>
-            <div class="col-3">
-                <img src="images/mainpic3.png">
-            </div>
-        </div>
-    </div>
-</div>
 <div class="small-container">
     {% if all_products %}
     <div class="row">
         {% for product in all_products %}
             <div class="col-4">
-                {% with product.images.all as images %}
-                        {% for image in images %}
-                            
-                                <img src="{{ image.image }}" alt="{{ product.name }}">
-                                <p>{{ image.image }}</p>
-                            
-                        {% endfor %}
+                {% with images=product.images.all %}
+                    {% for image in images %}
+                    {% if forloop.first %}
+                        <img src="media/{{ image.image }}" alt="{{ product.name }}"/>
+                        
+                        {% endif %}
+                    
+                    {% endfor  %}
                 {% endwith %}
                 <a href="{% url 'displaysite:product' product.id %}">{{product.name}}</a>
                 <div class="rating">
