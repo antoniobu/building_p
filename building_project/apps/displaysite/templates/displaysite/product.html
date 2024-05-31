@@ -54,15 +54,37 @@
         </style>
         <h1>
           {{product.brand}} <span>{{product.model}}</span>
+          
         </h1>
-        <h2>{{ product.price }} грн.</h2>
+        {%if product.brand == "SolidBuild"%}
+        <a href="http://localhost:8000/displaysite/loyaltyprogram">
+          <div style="text-decoration: underline;">
+            Продукція власної торгової марки - отримати знижку!
+          </div>
+        </a>
+        {%endif%}
+        {% if product.discount > 0 %}
+                        <p><span class="original-price">{{ product.price|floatformat:2 }} грн.</span><span class="price">-{{ product.discount|floatformat:0 }}%</span></span></p>
+                        <p><span class="discounted-price">{{ product.return_price|floatformat:2 }} грн.</span></p>
+                    {% else %}
+                        <p><span class="price">{{ product.price|floatformat:2 }} грн.</span></p>
+                    {% endif %}
 
         <div class="quantity-container">
           <h3>Бажана кількість:</h3>
           <input type="number" value="1" />
         </div>
 
-        <a href="" class="btn">Замовити</a>
+        {% if product.stock_quantity == 0 %}
+
+            <h1>
+              <span>Товару немає у наявності</span>
+              
+            </h1>        
+        {%else%}
+            <a href="" class="btn">Замовити</a>
+        {% endif %}
+        
         <h3>
           Опис:
           <i class="fa fa-indent"></i>
@@ -72,6 +94,12 @@
       </div>
     </div>
   </div>
+  <div class="small-container">
+    <div class="row row-2">
+        <h2>Інші товари з цієї категорії:</h2>
+    </div>
+  </div>
+  {% include 'partials/displayinrow.html' %}
   <script>
     var ProductImg = document.getElementById("ProductImg");
     var SmallImg = document.getElementsByClassName("small-img");
@@ -92,5 +120,5 @@
     {
         ProductImg.src = SmallImg[3].src;   
     }
-</script>
+  </script>
 {% endblock %}

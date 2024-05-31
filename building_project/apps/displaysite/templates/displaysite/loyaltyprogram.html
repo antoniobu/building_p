@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% block title %}
+  Програма лояльності
+{% endblock %}
+{% block content %}
+  <style>
+    .loyalty-program {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+    }
+    
+    .loyalty-program .title {
+      font-size: 2em;
+      margin-bottom: 20px;
+      text-align: center;
+      color: #4caf50;
+    }
+    
+    .loyalty-program .small-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      margin-bottom: 40px;
+    }
+    
+    .loyalty-program p {
+      font-size: 1.2em;
+      margin-bottom: 20px;
+    }
+    
+    .loyalty-program ul {
+      list-style-type: disc;
+      padding-left: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .loyalty-program ul li {
+      margin-bottom: 10px;
+    }
+    
+    .loyalty-program a {
+      color: #4caf50;
+      text-decoration: none;
+    }
+    
+    .loyalty-program a:hover {
+      text-decoration: underline;
+    }
+    
+    .loyalty-program .separator {
+      border-top: 1px solid #ddd;
+      margin: 40px 0;
+    }
+  </style>
+
+  <div class="loyalty-program">
+    <h2 class="title">Програма лояльності</h2>
+    <div class="small-container">
+      <p>Ми цінуємо кожного нашого клієнта та раді запропонувати вам нашу програму лояльності. Станьте нашим постійним клієнтом і отримуйте приємні бонуси:</p>
+      <ul>
+        <li>
+          Отримайте знижку 10% на наступне замовлення, згадавши нас у соціальних мережах. Для цього просто поділіться постом про наш магазин або наші товари, додайте хештег нашого магазину і надішліть посилання на ваш пост через <a href="https://forms.gle/r4dUsuXhKb2Q3Kaq7">цю форму</a>.
+        </li>
+        <li>
+          Отримайте знижку 15% на наступне замовлення, якщо ви згадаєте у своєму пості товари нашої власної торгової марки. Для цього поділіться постом із фотографіями наших товарів, додайте хештег нашого магазину та надішліть посилання на ваш пост через <a href="https://forms.gle/r4dUsuXhKb2Q3Kaq7">цю форму</a>.
+        </li>
+      </ul>
+      <div class="separator"></div>
+      <p>Для будівельних компаній ми пропонуємо спеціальні оптові ціни. Будь ласка, зв'яжіться з нами для обговорення умов співпраці та отримання персональної знижки.</p>
+    </div>
+  </div>
+{% endblock %}

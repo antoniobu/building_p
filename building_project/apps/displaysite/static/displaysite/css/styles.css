@@ -348,3 +348,25 @@ input:focus {
         line-height: 32px;
     }
 }
+
+.price {
+    font-size: 2em;
+    color: rgb(0, 0, 0);
+    /* Более крупный шрифт */
+    font-weight: bold;
+
+}
+
+
+.original-price {
+    text-decoration: line-through;
+    color: gray;
+    /* Серая перечеркнутая цена */
+    font-size: 1.5em;
+}
+
+.discounted-price {
+    color: green;
+    font-weight: bold;
+    font-size: 1.5em;
+}

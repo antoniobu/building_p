@@ -7,7 +7,7 @@ app_name = 'displaysite'
 urlpatterns = [
     path('', views.index, name='index'),
     path('<int:product_id>/', views.product, name='product'),
-    path(r'^$', views.product, name='product'),
+    path('loyaltyprogram/', views.loyaltyprogram, name='loyaltyprogram'),
 ]
 
 if settings.DEBUG:

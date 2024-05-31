@@ -1,0 +1,41 @@
+
+<div class="small-container">
+    {% if products %}
+    <div class="row">
+        {% for product in products %}
+            <div class="col-4">
+                {% with images=product.images.all %}
+                {%if images%}
+                    {% for image in images %}
+                    {% if forloop.first %}
+                        <img src="/media/{{ image.image }}" alt="{{ product.name }}"/>
+                        
+                        {% endif %}
+                    
+                    {% endfor  %}
+                {%else%}
+                    <img src="/media/misc/nophoto.jpg" alt="{{ product.name }}"/>
+                {% endif %}
+                {% endwith %}
+                <a href="{% url 'displaysite:product' product.id %}">{{product.name}} {{product.brand}} {{product.model}}</a>
+                <div class="rating">
+                    {% for i in "12345" %}
+                        <i class="fa fa-star"></i>
+                    {% endfor %}
+                </div>
+                <p>
+                    {% if product.discount > 0 %}
+                        <p><span class="original-price">{{ product.price|floatformat:2 }} грн.</span><span class="price">-{{ product.discount|floatformat:0 }}%</span></span></p>
+                        <p><span class="discounted-price">{{ product.return_price|floatformat:2 }} грн.</span></p>
+                    {% else %}
+                        <p><span class="price">{{ product.price|floatformat:2 }} грн.</span></p>
+                    {% endif %}
+                </p>
+            </div>
+            {% if forloop.counter|divisibleby:4 and not forloop.last %}
+                </div><div class="row">
+            {% endif %}
+        {% endfor %}
+    </div>
+    {%endif%}
+</div>

@@ -1,84 +1,40 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
-{% block title %}SolidBuild - Головна{% endblock %}
-{% block content %}
-<div class="header">
-<div class="container">
-<div class="row">
-    <div class="col-2">
-      <h1>
-        Високоякісні товари
-        <br />По доступним цінам!
-      </h1>
-      <p>
-        Цілодобова служба підтримки за телефоном та у месенжерах, десятки опцій доставки.
-        <br />Імпортні товари з Європи та США.
-      </p>
-      <a href="" class="btn">Переглянути товари &#8594;</a>
-    </div>
-    <div class="col-2">
-      <img src="media/misc/mainpic11.png" />
-    </div>
-</div>
-</div>
-</div>
-
-<div class="small-container">
-    {% if all_products %}
-    <div class="row">
-        {% for product in all_products %}
-            <div class="col-4">
-                {% with images=product.images.all %}
-                {%if images%}
-                    {% for image in images %}
-                    {% if forloop.first %}
-                        <img src="media/{{ image.image }}" alt="{{ product.name }}"/>
-                        
-                        {% endif %}
-                    
-                    {% endfor  %}
-                {%else%}
-                    <img src="/media/misc/nophoto.jpg" alt="{{ product.name }}"/>
-                {% endif %}
-                {% endwith %}
-                <a href="{% url 'displaysite:product' product.id %}">{{product.name}} {{product.brand}} {{product.model}}</a>
-                <div class="rating">
-                    {% for i in "12345" %}
-                        <i class="fa fa-star"></i>
-                    {% endfor %}
-                </div>
-                <p>{{ product.price }} грн.</p>
-            </div>
-            {% if forloop.counter|divisibleby:4 and not forloop.last %}
-                </div><div class="row">
-            {% endif %}
-        {% endfor %}
-    </div>
-        
-    {%else%}
-        Жодного товару не знайдено
-    {%endif%}
-</div>
-    <script>
-    var MenuItems = document.getElementById("MenulItems") ; 
-
-        MenuItems.style.maxHeight = "0px"; 
-        function menutoggle(){ 
-        if (MenuItems.style.maxHeight == "0px") 
-
-        {
-        MenuItems.style.maxHeight = "200px";
-        } 
-        else
-        {
-        MenuItems.style.maxHeight = "0px";
-        }
-        }
-    </script>
+{% block title %}
+  SolidBuild - Головна
 {% endblock %}
-
-
-
-       
-
-  
+{% block content %}
+  <div class="header">
+    <div class="container">
+      <div class="row">
+        <div class="col-2">
+          <h1>
+            Високоякісні товари
+            <br />По доступним цінам!
+          </h1>
+          <p>
+            Цілодобова служба підтримки за телефоном та у месенжерах, десятки опцій доставки.
+            <br />Імпортні товари з Європи та США.
+          </p>
+          <a href="" class="btn">Переглянути товари &#8594;</a>
+        </div>
+        <div class="col-2">
+          <img src="media/misc/mainpic11.png" />
+        </div>
+      </div>
+    </div>
+  </div>
+  {% include 'partials/displayinrow.html' %}
+  <script>
+    var MenuItems = document.getElementById('MenulItems')
+    
+    MenuItems.style.maxHeight = '0px'
+    function menutoggle() {
+      if (MenuItems.style.maxHeight == '0px') {
+        MenuItems.style.maxHeight = '200px'
+      } else {
+        MenuItems.style.maxHeight = '0px'
+      }
+    }
+  </script>
+{% endblock %}

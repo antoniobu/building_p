@@ -5,9 +5,17 @@ from .models import *
 # Create your views here.
 def index(request):
     #return HttpResponse("Hello, world. You're at the displaysite index.")
-    all_products = Product.objects.prefetch_related('images').all()
-    return render(request, 'displaysite/index.html', {'all_products': all_products})
+    products = Product.objects.prefetch_related('images').all()
+    return render(request, 'displaysite/index.html', {'products': products})
 
 def product(request, product_id):
     product = Product.objects.prefetch_related('images').get(id=product_id)
-    return render(request, 'displaysite/product.html', {'product': product})
+    #write code to make an array with 4 products of the same category
+    products = Product.objects.prefetch_related('images').filter(category=product.category)
+    #delete current product from the array
+    products = products.exclude(id=product_id)
+    return render(request, 'displaysite/product.html', {'product': product, 'products': products})
+
+
+def loyaltyprogram(request):
+    return render(request, 'displaysite/loyaltyprogram.html')
