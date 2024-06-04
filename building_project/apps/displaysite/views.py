@@ -1,6 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth import login, authenticate
+from django.contrib import messages
+from django.contrib import messages
 from django.http import HttpResponse,Http404,HttpResponseRedirect
 from .models import *
+from .forms import SignUpForm
 
 # Create your views here.
 def index(request):
@@ -19,3 +23,13 @@ def product(request, product_id):
 
 def loyaltyprogram(request):
     return render(request, 'displaysite/loyaltyprogram.html')
+def login(request):
+    return render(request, 'displaysite/login.html')
+
+def contacts(request):
+    return render(request, 'displaysite/contacts.html')
+
+def signup(request):
+
+    return render(request, 'displaysite/signup.html')
+

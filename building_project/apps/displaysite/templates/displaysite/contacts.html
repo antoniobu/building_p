@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% block title %}
+  Solid Build - Контакти
+{% endblock %}
+{% block content %}
+  <style>
+    .contacts {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+    }
+    
+    .contacts .title {
+      font-size: 2em;
+      margin-bottom: 20px;
+      text-align: center;
+      color: #4caf50;
+    }
+    
+    .contacts .small-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      margin-bottom: 40px;
+    }
+    
+    .contacts p {
+      font-size: 1.2em;
+      margin-bottom: 20px;
+    }
+
+    .contacts dl {
+      font-size: 1em;
+      margin-bottom: 20px;
+    }
+    
+    .contacts ul {
+      list-style-type: disc;
+      padding-left: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .contacts ul li {
+      margin-bottom: 10px;
+    }
+    
+    .contacts a {
+      color: #4caf50;
+      text-decoration: none;
+    }
+    
+    .contacts a:hover {
+      text-decoration: underline;
+    }
+    
+    .contacts .separator {
+      border-top: 1px solid #ddd;
+      margin: 40px 0;
+    }
+  </style>
+
+  <div class="contacts">
+    <h2 class="title">Контакти</h2>
+    <div class="small-container">
+      <p>Контактна інформація</p>
+      <ul>
+        <dl>
+          E-mail:
+        </dl>
+        <ul>
+          <li>
+            Solid.Build@gmail.com
+          </li>
+          <li>
+            Solid.Build-support@gmail.com(Служба підтримки)
+          </li>
+        </ul>
+        <dl>
+          Мобільні номери:
+        </dl>
+        <ul>
+          <li>
+            +38-(093)-ХХХ-ХХ-ХХ.
+          </li>
+          <li>
+           +38-(095)-ХХХ-ХХ-ХХ.
+          </li>
+          <li>
+            +38-(067)-ХХХ-ХХ-ХХ.
+          </li>
+          <li>
+           0-(800)-ХХХ-ХХХ.
+          </li>
+        </ul>
+      </ul>
+      <div class="separator"></div>
+      <p>Також ви можете завітати до нас за адресою:</p>
+      <ul>
+        <dl>
+          м. Харків, Вулиця Шевченка, 216
+        </dl>
+      </ul>
+      <div class="separator"></div>
+      <p>Наші соцмережі:</p>
+      <ul>
+        <li>
+          <a href="https://www.youtube.com/channel/ASAFF36afgd54zgeGRrtu">Youtube</a>.
+        </li>
+        <li>
+          <a href="https://x.com/Solid.Build">Twitter</a>.
+        </li>
+        <li>
+          <a href="https://www.instagram.com/Solid.Build">Instagram</a>.
+        </li>
+        <li>
+          <a href="https://www.facebook.com/Solid.Build">Facebook</a>.
+        </li>
+      </ul>
+    </div>
+  </div>
+{% endblock %}

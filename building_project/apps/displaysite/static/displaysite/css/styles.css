@@ -350,7 +350,7 @@ input:focus {
 }
 
 .price {
-    font-size: 2em;
+    font-size: 1.5em;
     color: rgb(0, 0, 0);
     /* Более крупный шрифт */
     font-weight: bold;
