@@ -1,12 +1,16 @@
-from django import forms
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
+from django.forms import ModelForm, TextInput, EmailInput, PasswordInput
 
-class SignUpForm(UserCreationForm):
-    first_name = forms.CharField(max_length=30, required=True, help_text='Required.')
-    last_name = forms.CharField(max_length=30, required=True, help_text='Required.')
-    email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')
-
+class UserForm(ModelForm):
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2')
+        fields = ['username','first_name', 'last_name', 'email', 'password']
+        widgets = {
+            'username': TextInput(attrs={'class': 'form-control', 'placeholder': 'Нікнейм'}),
+            
+            'first_name': TextInput(attrs={'class': 'form-control', 'placeholder': 'Ім\'я'}),
+            'last_name': TextInput(attrs={'class': 'form-control', 'placeholder': 'Прізвище'}),
+            'password': PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Пароль'}),
+            'email': EmailInput(attrs={'class': 'form-control', 'placeholder': 'Електронна пошта'})
+            
+        }

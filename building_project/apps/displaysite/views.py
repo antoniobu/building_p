@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.contrib import messages
 from django.http import HttpResponse,Http404,HttpResponseRedirect
 from .models import *
-from .forms import SignUpForm
+from .forms import UserForm
 
 # Create your views here.
 def index(request):
@@ -30,6 +30,10 @@ def contacts(request):
     return render(request, 'displaysite/contacts.html')
 
 def signup(request):
+    form = UserForm()
+    data={'form':form}
+    return render(request, 'displaysite/signup.html', data)
 
-    return render(request, 'displaysite/signup.html')
+def cart(request):
 
+    return render(request, 'displaysite/cart.html')

@@ -110,14 +110,14 @@
             <div class="form-btn">
               <span>Реєстрація</span>
             </div>
-            <form method="POST" action>
+            <form method="POST">
               {% csrf_token %}
-              {{ form.username.label_tag }}{{ form.username }}
-              {{ form.first_name.label_tag }}{{ form.first_name }}
-              {{ form.last_name.label_tag }}{{ form.last_name }}
-              {{ form.email.label_tag }}{{ form.email }}
-              {{ form.password1.label_tag }}{{ form.password1 }}
-              {{ form.password2.label_tag }}{{ form.password2 }}
+              {{ form.username }}
+              {{ form.first_name }}
+              {{ form.last_name }}
+              {{ form.email }}
+              {{ form.password }}
+
               <button type="submit" class="btn">Реєстрація</button>
               <h4>Вже є аккаунт? <a href="http://localhost:8000/displaysite/login">Логін</a></h4>
             </form>
