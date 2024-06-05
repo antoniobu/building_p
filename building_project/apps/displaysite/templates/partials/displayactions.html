@@ -1,8 +1,8 @@
 
 <div class="small-container">
-    {% if products %}
+    {% if actionproducts %}
     <div class="row">
-        {% for product in products %}
+        {% for product in actionproducts %}
             <div class="col-4">
                 {% with images=product.images.all %}
                 {%if images%}
@@ -37,6 +37,5 @@
             {% endif %}
         {% endfor %}
     </div>
-    
     {%endif%}
 </div>

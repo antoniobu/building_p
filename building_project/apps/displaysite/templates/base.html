@@ -9,6 +9,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@400..800&display=swap" rel="stylesheet">
+        
         <script src="https://kit.fontawesome.com/62e1420fd9.js" crossorigin="anonymous"></script>
         <title>
             {% block title %}{% endblock %}
@@ -16,8 +17,12 @@
     </head>
 
     <body>
+        
         {% include 'partials/header.html' %}
-        {%block content%}{% endblock %}
+        <div class="wrapper">
+            {% block content %}
+            {% endblock %}
+        </div>
         {% include 'partials/footer.html' %}
     </body>
 </hmtl>

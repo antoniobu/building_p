@@ -11,7 +11,10 @@ urlpatterns = [
     path('signup/', views.signup, name='signup'),
     path('login/', views.login, name='login'),
     path('contacts/', views.contacts, name='contacts'),
-     path('cart/', views.cart, name='cart'),
+    path('cart/', views.cart, name='cart'),
+    path('allproducts/', views.allproducts, name='allproducts'),
+    path('about/', views.about, name='about'),
+    path('myaccount/', views.myaccount, name='myaccount'),
 
 ]
 

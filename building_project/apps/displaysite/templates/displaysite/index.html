@@ -4,7 +4,12 @@
   SolidBuild - Головна
 {% endblock %}
 {% block content %}
-  <div class="header">
+  <style>
+    .title a:hover {
+      text-decoration: underline;
+    }
+  </style>
+  <div class="subheader">
     <div class="container">
       <div class="row">
         <div class="col-2">
@@ -24,7 +29,12 @@
       </div>
     </div>
   </div>
+
+  <h2 class="title">Акційні пропозиції</h2>
+  {% include 'partials/displayactions.html' %}
+  <h2 class="title">Бестселлери</h2>
   {% include 'partials/displayinrow.html' %}
+
   <script>
     var MenuItems = document.getElementById('MenulItems')
     

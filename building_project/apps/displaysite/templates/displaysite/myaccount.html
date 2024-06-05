@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% block title %}
+  Solid Build - Мій аккаунт
+{% endblock %}
+{% block content %}
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    .container1 {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .text-center {
+      text-align: center;
+    }
+    .card {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+    .card-header {
+      background-color: #007bff;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 8px 8px 0 0;
+    }
+    .card-body {
+      padding: 20px;
+      width: 900px;
+    }
+    .list-group-item {
+      border: none;
+      padding: 10px 0;
+    }
+    .list-group-item:nth-child(odd) {
+      background-color: #f9f9f9;
+    }
+  </style>
+  <div class="container1">
+    <h1 class="text-center mb-4">Мій аккаунт</h1>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card mb-4">
+          <div class="card-body">
+            <p>
+              <strong>Нік:</strong> {{ user.username }}
+            </p>
+            <p>
+              <strong>Ім'я:</strong> {{ user.first_name }}
+            </p>
+            <p>
+              <strong>Прізвище:</strong> {{ user.last_name }}
+            </p>
+            <p>
+              <strong>Пошта:</strong> {{ user.email }}
+            </p>
+          </div>
+        </div>
+
+        <!-- Current Orders -->
+        <div class="card mb-4">
+          <div class="card-header">Поточні замовлення</div>
+          <div class="card-body">
+            {% if current_orders %}
+              <ul class="list-group">
+                {% for order in current_orders %}
+                  <li class="list-group-item">
+                    <strong>Номер замовлення:</strong> {{ order.id }}<br />
+                    <strong>Дата:</strong> {{ order.date }}<br />
+                    <strong>Статус:</strong> {{ order.status }}<br />
+                    <strong>Сума:</strong> {{ order.total }}
+                  </li>
+                {% endfor %}
+              </ul>
+            {% else %}
+              <p>Немає поточних замовлень.</p>
+            {% endif %}
+          </div>
+        </div>
+
+        <!-- Order History -->
+        <div class="card">
+          <div class="card-header">Історія замовлень</div>
+          <div class="card-body">
+            {% if order_history %}
+              <ul class="list-group">
+                {% for order in order_history %}
+                  <li class="list-group-item">
+                    <strong>Номер замовлення:</strong> {{ order.id }}<br />
+                    <strong>Дата:</strong> {{ order.date }}<br />
+                    <strong>Статус:</strong> {{ order.status }}<br />
+                    <strong>Сума:</strong> {{ order.total }}
+                  </li>
+                {% endfor %}
+              </ul>
+            {% else %}
+              <p>Немає історії замовлень.</p>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

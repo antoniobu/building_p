@@ -109,11 +109,10 @@
             <div class="form-btn">
               <span>Логін</span>
             </div>
-            <form>
-              <input type="text" placeholder="Нікнейм" />
-              <input type="password" placeholder="Пароль" />
-              <button type="submit" class="btn">Логін</button>
-              <h4>Немає аккаунту? <a href="http://localhost:8000/displaysite/signup">Реєстрація</a></h4>
+            <form method="post">
+              {% csrf_token %}
+              {{ form.as_p }}
+              <button type="submit">Логин</button>
             </form>
           </div>
         </div>
