@@ -42,6 +42,12 @@
     .list-group-item:nth-child(odd) {
       background-color: #f9f9f9;
     }
+    .horizontal-line {
+      width: 100%;
+      height: 4px; /* Толщина линии */
+      background-color: #000; /* Цвет линии */
+      margin: 20px 0; /* Отступы сверху и снизу */
+  }
   </style>
   <div class="container1">
     <h1 class="text-center mb-4">Мій аккаунт</h1>
@@ -61,6 +67,10 @@
             <p>
               <strong>Пошта:</strong> {{ user.email }}
             </p>
+            <form method="post" action="http://localhost:8000/displaysite/logout">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-danger">Вийти з аккаунта</button>
+            </form>
           </div>
         </div>
 
@@ -68,17 +78,63 @@
         <div class="card mb-4">
           <div class="card-header">Поточні замовлення</div>
           <div class="card-body">
-            {% if current_orders %}
-              <ul class="list-group">
-                {% for order in current_orders %}
+            {% if orders %}
+              {% for order in orders %}
+                <ul class="list-group">
                   <li class="list-group-item">
                     <strong>Номер замовлення:</strong> {{ order.id }}<br />
-                    <strong>Дата:</strong> {{ order.date }}<br />
-                    <strong>Статус:</strong> {{ order.status }}<br />
-                    <strong>Сума:</strong> {{ order.total }}
+                    <strong>Дата:</strong> {{ order.created_at }}<br />
+                    {% if orderitems %}
+                      <div class="row">
+                        {% for item in orderitems %}
+                          {% if item.order_id == order.id %}
+                            {% for product in products %}
+                              {% if product.id == item.product_id %}
+                              <div class="col-4">
+                                {% with images=product.images.all %}
+                                {%if images%}
+                                    {% for image in images %}
+                                    {% if forloop.first %}
+                                        <img src="/media/{{ image.image }}" alt="{{ product.name }}"/>
+                                        
+                                        {% endif %}
+                                    
+                                    {% endfor  %}
+                                {%else%}
+                                    <img src="/media/misc/nophoto.jpg" alt="{{ product.name }}"/>
+                                {% endif %}
+                                {% endwith %}
+                                <a href="{% url 'displaysite:product' product.id %}">{{product.name}} {{product.brand}} {{product.model}}</a>
+                                <div class="rating">
+                                    {% for i in "12345" %}
+                                        <i class="fa fa-star"></i>
+                                    {% endfor %}
+                                </div>
+                                <p>
+                                    {% if product.discount > 0 %}
+                                        <p><span class="original-price">{{ product.price|floatformat:2 }} грн.</span><span class="price">  -{{ product.discount|floatformat:0 }}%</span></span></p>
+                                        <p><span class="discounted-price">{{ product.return_price|floatformat:2 }} грн.</span></p>
+                                    {% else %}
+                                        <p><span class="price">{{ product.price|floatformat:2 }} грн.</span></p>
+                                    {% endif %}
+                                      <p><span class="price">Кількість:{{ item.quantity }} </span></p>
+                                </p>
+                            </div>
+                            {% if forloop.counter|divisibleby:4 and not forloop.last %}
+                                </div><div class="row">
+                            {% endif %}
+                              {% endif %}
+                            {% endfor %}
+                          {% endif %}
+                        {% endfor %}
+                      </div>
+                    {% else %}
+                      <p>Немає товарів у замовленні.</p>
+                    {% endif %}
                   </li>
-                {% endfor %}
-              </ul>
+                </ul>
+                <div class="horizontal-line"></div>
+              {% endfor %}
             {% else %}
               <p>Немає поточних замовлень.</p>
             {% endif %}

@@ -9,7 +9,6 @@
         <nav>
           <ul>
             <li>
-              {{ user.username }}
               <a href="http://localhost:8000/displaysite/allproducts">Усі товари</a>
             </li>
             <li>
@@ -22,12 +21,13 @@
               <a href="http://localhost:8000/displaysite/loyaltyprogram">Програма лояльності</a>
             </li>
             <li>
-              <a href="http://localhost:8000/displaysite/login">Увійти</a>
-              або
-              <a href="http://localhost:8000/displaysite/signup">Зареєструватися</a>
-            </li>
-            <li>
-              <a href="http://localhost:8000/displaysite/myaccount">Мій аккаунт</a>
+              {% if user.username != '' %}
+                <a href="http://localhost:8000/displaysite/myaccount">Мій аккаунт</a>
+              {% else %}
+                <a href="http://localhost:8000/displaysite/login">Увійти</a>
+                або
+                <a href="http://localhost:8000/displaysite/signup">Зареєструватися</a>
+              {% endif %}
             </li>
           </ul>
         </nav>

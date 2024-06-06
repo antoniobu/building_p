@@ -1,5 +1,8 @@
 from django.contrib.auth.models import User
-from django.forms import ModelForm, TextInput, EmailInput, PasswordInput
+from django.forms import *
+from django import forms
+
+
 
 class UserForm(ModelForm):
     class Meta:
@@ -14,3 +17,6 @@ class UserForm(ModelForm):
             'email': EmailInput(attrs={'class': 'form-control', 'placeholder': 'Електронна пошта'})
             
         }
+class LoginForm(forms.Form):
+    username = forms.CharField(label='Ваш нікнейм', widget=forms.TextInput(attrs={'class': 'form-input','placeholder': 'Нікнейм'}))
+    password = forms.CharField(label='Пароль', widget=forms.PasswordInput(attrs={'class': 'form-input', 'placeholder': 'Пароль'}))

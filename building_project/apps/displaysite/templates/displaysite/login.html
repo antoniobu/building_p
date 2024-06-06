@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block title %}
-  Логін
+  Вхід у аккаунт
 {% endblock %}
 {% block content %}
   <style>
@@ -42,7 +42,7 @@
     .form-container {
       background: #fff;
       width: 100%;
-      max-width: 400px;
+      max-width: 500px;
       padding: 40px;
       border-radius: 10px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -62,6 +62,7 @@
     }
     
     input[type='text'],
+    input[type='email'],
     input[type='password'] {
       width: 100%;
       padding: 10px;
@@ -107,12 +108,15 @@
         <div class="col-2">
           <div class="form-container">
             <div class="form-btn">
-              <span>Логін</span>
+              <span>Вхід у аккаунт</span>
             </div>
-            <form method="post">
+            <form method="POST">
+              {{ form.username }}
+              {{ form.password }}
               {% csrf_token %}
-              {{ form.as_p }}
-              <button type="submit">Логин</button>
+              <span>{{ error }}</span>
+              <button type="submit" class="btn">Увійти</button>
+              <h4>Немає аккаунту? <a href="http://localhost:8000/displaysite/signup">зарееструватися</a></h4>
             </form>
           </div>
         </div>
