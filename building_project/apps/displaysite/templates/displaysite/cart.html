@@ -3,137 +3,103 @@
   Solid Build - Кошик
 {% endblock %}
 {% block content %}
-   <style>
+  <style>
     .cart-page {
-        margin: 80px auto;
+      margin: 80px auto;
     }
-    table{
-        width: 100%;
-        border-collapse: collapse;
+    table {
+      width: 100%;
+      border-collapse: collapse;
     }
-    .cart-info{
-        display: flex;
-        flex-wrap: wrap;
+    .cart-info {
+      display: flex;
+      flex-wrap: wrap;
     }
-    th{
-        text-align: left;
-        padding: 5px;
-        color: #fff;
-        background: #5179d7;
-        font-weight: normal;
+    th {
+      text-align: left;
+      padding: 5px;
+      color: #fff;
+      background: #5179d7;
+      font-weight: normal;
     }
-    td{
-        padding: 10px 5px;
+    td {
+      padding: 10px 5px;
     }
-    td input{
-        width: 40px;
-        height: 30px;
-        padding: 5px;
+    td input {
+      width: 40px;
+      height: 30px;
+      padding: 5px;
     }
-    td a{
-        color: #1d5bec;
-        font-size: 12px;
-
+    td a {
+      color: #1d5bec;
+      font-size: 24px;
     }
-    td img{
-        width: 80px;
-        height: 80px;
-        margin-right: 10px;
+    td img {
+      width: 120px;
+      height: 120px;
+      margin-right: 10px;
     }
-    .total-price{
-        display: flex;
-        justify-content: flex-end;
+    .total-price {
+      display: flex;
+      justify-content: flex-end;
     }
-    .total-price table{
-        border-top: 3px solid #5179d7;
-        width: 100%;
-        max-width: 400px;
+    .total-price table {
+      border-top: 3px solid #5179d7;
+      width: 100%;
+      max-width: 400px;
     }
-    td:last-child{
-        text-align: right;
+    td:last-child {
+      text-align: right;
     }
-    th:last-child{
-        text-align: right;
+    th:last-child {
+      text-align: right;
     }
-    td:last-child{
-        text-align: right;
+    td:last-child {
+      text-align: right;
     }
     @media only screen and (max-width: 600px) {
-        .cart-info p{
-            display: none;
-        }
+      .cart-info p {
+        display: none;
+      }
     }
-   </style>
-   <div class="small-container cart-page">
-    <table>
-        <tr>
-            <th>Товар</th>
-            <th>Кількість</th>
-            <th>Вартість</th>
+    .horizontal-line {
+      width: 100%;
+      height: 4px; /* Толщина линии */
+      background-color: #2573cc; /* Цвет линии */
+      margin: 20px 0; /* Отступы сверху и снизу */
+    }
+  </style>
 
-        </tr>
-        <tr>
+  {% if cart_items %}
+    <h2 class="title">Ваш кошик</h2>
+    <div class="small-container cart-page">
+      <table>
+        {% for cart_item in cart_items %}
+          <tr>
             <td>
-                <div class="cart-info">
-                    <img src="/media/images/25af3-ilario-beige-t1.webp">
-                    <div>
-                        <p>Назва</p>
-                        <small>1600 грн</small>
-                        <br>
-                        <a href="">Видалити</a>
-                    </div>
+              <div class="cart-info">
+                {% for image in cart_item.product.images.all %}
+                  {% if forloop.first %}
+                    <img src="/media/{{ image.image }}" alt="{{ cart_item.product.name }}" width="150" />
+                  {% endif %}
+                {% endfor %}
+                <div>
+                  <p>
+                    <a href="{% url 'displaysite:product' cart_item.product.id %}">{{ cart_item.product.brand }} {{ cart_item.product.model }}</a>
+                  </p>
+                  <form method="post" action="{% url 'displaysite:remove_from_cart' cart_item.id %}" style="margin-top: 10px;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Видалити з кошику</button>
+                  </form>
                 </div>
+              </div>
+              <div class="horizontal-line"></div>
             </td>
-            <td><input type="number" value="1"></td>
-            <td>1600 грн</td>
-        </tr>
-        <tr>
-            <td>
-                <div class="cart-info">
-                    <img src="/media/images/25af3-ilario-beige-t1.webp">
-                    <div>
-                        <p>Назва</p>
-                        <small>1600 грн</small>
-                        <br>
-                        <a href="">Видалити</a>
-                    </div>
-                </div>
-            </td>
-            <td><input type="number" value="1"></td>
-            <td>1600 грн</td>
-        </tr>
-        <tr>
-            <td>
-                <div class="cart-info">
-                    <img src="/media/images/25af3-ilario-beige-t1.webp">
-                    <div>
-                        <p>Назва</p>
-                        <small>1600 грн</small>
-                        <br>
-                        <a href="">Видалити</a>
-                    </div>
-                </div>
-            </td>
-            <td><input type="number" value="1"></td>
-            <td>1600 грн</td>
-        </tr>
-        
-    </table>
-
-    <div class="total-price">
-        <table>
-            <tr>
-                <td>Ціна товару</td>
-                <td>3200 грн</td>
-            </tr>
-            <tr>
-                <td>Доставка</td>
-                <td>500 грн</td>
-            </tr>
-            <tr>
-                <td>Всього</td>
-                <td>3700 грн</td>
-            </tr>
-            </table>
-   </div>
+          </tr>
+        {% endfor %}
+      </table>
+    </div>
+  {% else %}
+  <h1 class="title">Товарів у кошику немає</h2>
+  {% endif %}
 {% endblock %}

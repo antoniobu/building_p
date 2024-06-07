@@ -1,10 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login as login_func, logout
 from django.contrib.auth import  authenticate
 from django.http import HttpResponse,Http404,HttpResponseRedirect
 from django.db.models import Q
 from django.contrib.auth.hashers import make_password
-
+from django.contrib import messages
 
 from .models import *
 from .forms import *
@@ -39,8 +39,13 @@ def myaccount(request):
     return render(request, 'displaysite/myaccount.html', { 'products': products,'orders' : orders, 'orderitems' : orderitems})
 
 #CART PAGE
+
+
 def cart(request):
-    return render(request, 'displaysite/cart.html')
+    cart_items = Cart.objects.filter(user=request.user).prefetch_related('product__images')
+    return render(request, 'displaysite/cart.html', {'cart_items': cart_items})
+
+
 
 #ABOUT PAGE
 def about(request):
@@ -120,3 +125,46 @@ def login(request):
 def logout_view(request):
     logout(request)
     return redirect('/displaysite')  
+
+def makeorder(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+
+    if request.method == 'POST':
+        form = MakeOrder(request.POST)
+        if form.is_valid():
+            quantity = form.cleaned_data['quantity']
+            
+            # Создаем новый заказ
+            order = Order.objects.create(user=request.user)
+            
+            # Создаем позицию заказа
+            OrderItem.objects.create(
+                order=order,
+                product=product,
+                quantity=quantity
+            )
+
+            return redirect('/displaysite/myaccount')
+    else:
+        form = MakeOrder()
+
+    return render(request, 'displaysite/product.html', {'product': product, 'form': form})
+
+def cancel_order(request, order_id):
+    order = get_object_or_404(Order, id=order_id, user=request.user)
+    order.delete()
+    messages.success(request, 'Замовлення було успішно скасовано.')
+    return redirect('/displaysite/myaccount')
+
+def add_to_cart(request, product_id):
+    if request.user.is_authenticated:
+        # Получить пользователя, добавить товар в его корзину
+        user = request.user
+        product = Product.objects.get(id=product_id)
+        cart_item = Cart.objects.create(user=user, product=product)
+        return redirect('displaysite:cart')  # Перенаправить пользователя на страницу корзины
+
+def remove_from_cart(request, cartitem_id):
+    cart_item_to_delete = get_object_or_404(Cart, id=cartitem_id, user=request.user)
+    cart_item_to_delete.delete()
+    return redirect('/displaysite/cart')

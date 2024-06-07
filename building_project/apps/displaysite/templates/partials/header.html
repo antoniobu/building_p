@@ -1,6 +1,12 @@
 {% load static %}
 {% with images_dir='displaysite/images/' %}
-  <div class="header">
+  <style>
+    .headerH {
+      background: #75a7df;
+      height: 100px; /* Задаем фиксированную высоту */
+    }
+  </style>
+  <div class="headerH">
     <div class="container">
       <div class="navbar">
         <div class="logo">
@@ -22,7 +28,7 @@
             </li>
             <li>
               {% if user.username != '' %}
-                <a href="http://localhost:8000/displaysite/myaccount">Мій аккаунт</a>
+                <a href="http://localhost:8000/displaysite/myaccount">Мій акаунт</a>
               {% else %}
                 <a href="http://localhost:8000/displaysite/login">Увійти</a>
                 або
@@ -31,9 +37,11 @@
             </li>
           </ul>
         </nav>
-        <div class="cart">
-          <a href="http://localhost:8000/displaysite/cart"><img src="/media/misc/cart_icon.png" width="30px" height="30px" /></a>
-        </div>
+        {% if user.username != '' %}
+          <div>
+            <a href="http://localhost:8000/displaysite/cart"><img src="/media/misc/cart_icon.png" width="30px" height="30px" /></a>
+          </div>
+        {% endif %}
       </div>
     </div>
   </div>

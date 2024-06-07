@@ -70,10 +70,7 @@
                         <p><span class="price">{{ product.price|floatformat:2 }} грн.</span></p>
                     {% endif %}
 
-        <div class="quantity-container">
-          <h3>Бажана кількість:</h3>
-          <input type="number" value="1" />
-        </div>
+       
 
         {% if product.stock_quantity == 0 %}
 
@@ -82,7 +79,26 @@
               
             </h1>        
         {%else%}
-            <a href="" class="btn">Замовити</a>
+        <div class="quantity-container">
+          
+          <form method="post" action="{% url 'displaysite:makeorder' product.id %}">
+            {% csrf_token %}
+            
+            {% if user.is_authenticated %}
+          
+            {{ form.quantity }}
+            <button class="btn" type="submit">Замовити</button>
+            {% else %}
+                <p><span class="price">Ви повинні увійти в систему, щоб зробити замовлення або додати товар у корзину</span></p>
+            {% endif %}
+        </form>
+        {% if user.is_authenticated %}
+            <form method="post" action="{% url 'displaysite:add_to_cart' product.id %}">
+                {% csrf_token %}
+                <button class="btn" type="submit">Додати у кошик</button>
+            </form>
+        {% endif %}
+        </div>
         {% endif %}
         
         <h3>

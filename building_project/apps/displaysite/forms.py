@@ -20,3 +20,8 @@ class UserForm(ModelForm):
 class LoginForm(forms.Form):
     username = forms.CharField(label='Ваш нікнейм', widget=forms.TextInput(attrs={'class': 'form-input','placeholder': 'Нікнейм'}))
     password = forms.CharField(label='Пароль', widget=forms.PasswordInput(attrs={'class': 'form-input', 'placeholder': 'Пароль'}))
+
+
+
+class MakeOrder(forms.Form):
+    quantity = forms.IntegerField(min_value=1, label='Quantity')
